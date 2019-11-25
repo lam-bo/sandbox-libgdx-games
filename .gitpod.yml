@@ -7,6 +7,7 @@ vscode:
 
 tasks:
 - before: |
+    export ANDROID_HOME=/workspace/android-sdk
     export PATH=$ANDROID_HOME/bin:$ANDROID_HOME/platform-tools:$PATH
     mkdir -p /home/gitpod/.android
     touch /home/gitpod/.android/repositories.cfg
@@ -17,3 +18,5 @@ tasks:
     echo "Download libgdx setup jar..."
     mkdir -p /workspace/libgdx && wget -P /workspace/libgdx/ https://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar
     cd /workspace/libgdx-training-games
+  command: |
+    chmod +x /workspace/libgdx-training-games/initProjectTemplate.sh

@@ -13,6 +13,7 @@ tasks:
   init: |
     echo "Installing Android SDK..."
     mkdir -p /workspace/android-sdk && cd /workspace/android-sdk && wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && unzip sdk-tools-linux-4333796.zip && rm -f sdk-tools-linux-4333796.zip
-    /workspace/android-sdk/tools/bin/sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.3"
+    yes | /workspace/android-sdk/tools/bin/sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.3"
     echo "Download libgdx setup jar..."
     mkdir -p /workspace/libgdx && wget -P /workspace/libgdx/ https://libgdx.badlogicgames.com/nightlies/dist/gdx-setup.jar
+    cd /workspace/libgtx-training-games

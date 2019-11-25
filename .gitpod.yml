@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.dockerfile
+
+vscode:
+  extensions:
+    - fwcd.kotlin@0.2.10:kX3nrW3fv/LjU/QSQ41zYA==

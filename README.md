@@ -1,0 +1,1 @@
+Training on libgdx + kotlin  with simple interactive games, starting with an interactive version of the game of life

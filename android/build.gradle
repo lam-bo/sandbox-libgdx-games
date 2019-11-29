@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "29.0.2"
-    compileSdkVersion 29
+    buildToolsVersion "28.0.3"
+    compileSdkVersion 28
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -17,9 +17,9 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.apps.mirobo"
-        minSdkVersion 14
-        targetSdkVersion 29
+        applicationId "com.libktx.game"
+        minSdkVersion 9
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -86,5 +86,28 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.apps.mirobo/com.apps.mirobo.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.libktx.game/com.libktx.game.AndroidLauncher'
+}
+
+// sets up the Android Idea project, using the old Ant based build.
+idea {
+    module {
+        sourceDirs += file("src");
+        scopes = [ COMPILE: [plus:[project.configurations.compile]]]        
+
+        iml {
+            withXml {
+                def node = it.asNode()
+                def builder = NodeBuilder.newInstance();
+                builder.current = node;
+                builder.component(name: "FacetManager") {
+                    facet(type: "android", name: "Android") {
+                        configuration {
+                            option(name: "UPDATE_PROPERTY_FILES", value:"true")
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
